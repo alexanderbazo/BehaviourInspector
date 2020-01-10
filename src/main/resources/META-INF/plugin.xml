@@ -1,0 +1,23 @@
+<idea-plugin>
+    <id>de.ur.mi.BehaviourInspector</id>
+    <name>Behaviour Inspector</name>
+    <vendor email="alexander.bazo@ur.de" url="https://mi.ur.de">Lehrstuhl für Medieninformatik</vendor>
+
+    <description>A IntelliJ IDEA plugin to log user behaviour during programming assignments.</description>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <postStartupActivity implementation="app.App" />
+        <applicationService serviceImplementation="app.services.InspectorService"/>
+        <applicationService serviceImplementation="app.services.ManagerService"/>
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+    </actions>
+
+
+    <idea-version since-build="2019.3"/>
+
+</idea-plugin>

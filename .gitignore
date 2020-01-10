@@ -1,0 +1,9 @@
+# IDEA
+.idea/uiDesigner.xml
+.idea/jarRepositories.xml
+
+# Gradle
+.gradle
+
+# Build
+build
