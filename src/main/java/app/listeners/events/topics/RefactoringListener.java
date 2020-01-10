@@ -1,4 +1,4 @@
-package app.listeners.events;
+package app.listeners.events.topics;
 
 import app.listeners.events.base.BaseListener;
 import com.intellij.refactoring.listeners.RefactoringEventData;
@@ -9,7 +9,6 @@ import org.jetbrains.annotations.Nullable;
 public class RefactoringListener extends BaseListener implements RefactoringEventListener {
     @Override
     public void refactoringStarted(@NotNull String refactoringId, @Nullable RefactoringEventData beforeData) {
-        System.out.println("Refactoring started");
     }
 
     @Override

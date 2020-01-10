@@ -1,7 +1,10 @@
-package app.listeners.events;
+package app.listeners.events.topics;
 
 import app.listeners.events.base.BaseListener;
-import com.intellij.execution.*;
+import com.intellij.execution.ExecutionListener;
+import com.intellij.execution.RunManager;
+import com.intellij.execution.RunManagerListener;
+import com.intellij.execution.RunnerAndConfigurationSettings;
 import com.intellij.execution.process.ProcessHandler;
 import com.intellij.execution.runners.ExecutionEnvironment;
 import org.jetbrains.annotations.NotNull;
@@ -41,7 +44,6 @@ public class RunListener extends BaseListener implements RunManagerListener, Exe
 
     @Override
     public void beginUpdate() {
-        System.out.println("in: beginUpdate");
     }
 
     @Override
@@ -70,7 +72,6 @@ public class RunListener extends BaseListener implements RunManagerListener, Exe
 
     @Override
     public void processStarted(@NotNull String executorId, @NotNull ExecutionEnvironment env, @NotNull ProcessHandler handler) {
-        System.out.println("in: processStarted");
     }
 
     @Override

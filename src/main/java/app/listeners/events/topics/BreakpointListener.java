@@ -1,4 +1,4 @@
-package app.listeners.events;
+package app.listeners.events.topics;
 
 import app.listeners.events.base.BaseListener;
 import com.intellij.xdebugger.breakpoints.XBreakpoint;
@@ -9,12 +9,10 @@ public class BreakpointListener extends BaseListener implements XBreakpointListe
 
     @Override
     public void breakpointAdded(@NotNull XBreakpoint breakpoint) {
-        System.out.println("in: breakpointAdded");
     }
 
     @Override
     public void breakpointRemoved(@NotNull XBreakpoint breakpoint) {
-
     }
 
     @Override

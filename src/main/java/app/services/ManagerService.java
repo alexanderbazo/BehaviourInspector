@@ -1,40 +1,48 @@
 package app.services;
 
-
-import app.listeners.behaviour.BehaviourListener;
-import app.listeners.events.*;
-import com.intellij.AppTopics;
+import app.listeners.events.topics.*;
+import app.listeners.events.ui.PopupMenuListener;
 import com.intellij.codeInsight.completion.CompletionPhaseListener;
-import com.intellij.ide.navigationToolbar.NavBarModelListener;
+import com.intellij.openapi.actionSystem.impl.ActionMenu;
 import com.intellij.openapi.components.ServiceManager;
-import com.intellij.openapi.fileEditor.FileEditorManagerListener;
-import com.intellij.openapi.project.ProjectManager;
+import com.intellij.openapi.wm.impl.IdeFrameImpl;
 import com.intellij.util.messages.MessageBus;
 import com.intellij.xdebugger.breakpoints.XBreakpointListener;
-import java.util.ArrayList;
+
+import javax.swing.*;
+import java.awt.*;
 
 public class ManagerService {
-
-    private ArrayList<BehaviourListener> listeners = new ArrayList<BehaviourListener>();
 
     public static ManagerService getInstance() {
         return ServiceManager.getService(ManagerService.class);
     }
 
-    public void init(MessageBus bus) {
+    public void initMenuListener(JComponent entryPoint) {
+        PopupMenuListener popupListener = new PopupMenuListener();
+        JMenuBar menuBar = findMenuBar(entryPoint.getParent());
+        for(MenuElement element: menuBar.getSubElements()) {
+            JPopupMenu popupMenu = ((ActionMenu) element).getPopupMenu();
+            popupMenu.addPopupMenuListener(popupListener);
+        }
+    }
+
+    public void subscribeToMessageBus(MessageBus bus) {
         bus.connect().subscribe(RefactoringListener.REFACTORING_EVENT_TOPIC, new RefactoringListener());
         bus.connect().subscribe(CompletionPhaseListener.TOPIC, new CodeCompletionListener());
         bus.connect().subscribe(EditorHintListener.TOPIC, new EditorHintListener());
         bus.connect().subscribe(XBreakpointListener.TOPIC, new BreakpointListener());
-        bus.connect().subscribe(ToolWindowListener.TOPIC, new ToolWindowListener());
-        bus.connect().subscribe(FileEditorManagerListener.FILE_EDITOR_MANAGER, new FileEditorListener());
-        bus.connect().subscribe(AppTopics.FILE_DOCUMENT_SYNC, new DocumentListener());
-        // bus.connect().subscribe(RunManagerListener.TOPIC, new RunListener());
-        bus.connect().subscribe(CommandListener.TOPIC, new CommandListener());
-        bus.connect().subscribe(ProjectTaskListener.TOPIC, new ProjectTaskListener());
-        bus.connect().subscribe(ProjectTaskListener.TOPIC, new ProjectTaskListener());
-        bus.connect().subscribe(ProjectManager.TOPIC, new ProjectManagerListener());
-        bus.connect().subscribe(NavBarModelListener.NAV_BAR, new NavigationBarListener());
+        bus.connect().subscribe(RunListener.TOPIC, new RunListener());
+    }
+
+
+    private JMenuBar findMenuBar(Container parent) {
+        if (parent.getParent() != null) {
+            return findMenuBar(parent.getParent());
+        } else {
+            IdeFrameImpl frame = (IdeFrameImpl) parent;
+            return frame.getJMenuBar();
+        }
     }
 
 }

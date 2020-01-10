@@ -11,6 +11,7 @@
         <postStartupActivity implementation="app.App" />
         <applicationService serviceImplementation="app.services.InspectorService"/>
         <applicationService serviceImplementation="app.services.ManagerService"/>
+        <applicationService serviceImplementation="app.services.LogService"/>
     </extensions>
 
     <actions>

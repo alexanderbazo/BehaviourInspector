@@ -1,4 +1,4 @@
-package app.listeners.events;
+package app.listeners.events.topics;
 
 import app.listeners.events.base.BaseListener;
 import com.intellij.openapi.project.Project;
@@ -9,6 +9,5 @@ public class EditorHintListener extends BaseListener implements com.intellij.cod
 
     @Override
     public void hintShown(Project project, @NotNull LightweightHint hint, int flags) {
-        System.out.println("in: hintShown");
     }
 }
