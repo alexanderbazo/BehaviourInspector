@@ -3,7 +3,7 @@ plugins {
     id 'org.jetbrains.intellij' version '0.4.15'
 }
 
-group 'org.example'
+group 'de.ur.mi'
 version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
@@ -24,6 +24,5 @@ intellij {
 }
 patchPluginXml {
     changeNotes """
-      Add change notes here.<br>
-      <em>most HTML tags may be used</em>"""
+     Alpha version (dev)"""
 }
