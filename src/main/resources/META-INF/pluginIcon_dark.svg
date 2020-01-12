@@ -27,30 +27,7 @@
   <g
      transform="translate(0,-286.41665)"
      id="layer1">
-    <flowRoot
-       transform="scale(0.26458333)"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-       id="flowRoot4560"
-       xml:space="preserve"><flowRegion
-         id="flowRegion4562"><rect
-           y="798.26074"
-           x="182.83762"
-           height="181.82745"
-           width="243.44676"
-           id="rect4564" /></flowRegion><flowPara
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:96px;font-family:'Noto Mono';-inkscape-font-specification:'Noto Mono'"
-         id="flowPara4566">Bfsdf</flowPara></flowRoot>    <flowRoot
-       transform="scale(0.26458333)"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-       id="flowRoot4568"
-       xml:space="preserve"><flowRegion
-         id="flowRegion4570"><rect
-           y="608.35205"
-           x="-83.842659"
-           height="3575.9399"
-           width="817.21338"
-           id="rect4572" /></flowRegion><flowPara
-         id="flowPara4574" /></flowRoot>    <rect
+    <rect
        style="fill:#000000;fill-opacity:0;stroke:none;stroke-width:0.02645833;stroke-opacity:1"
        y="286.41666"
        x="4.7546388e-07"
