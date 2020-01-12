@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="400"
+   height="400"
+   viewBox="0 0 105.83333 105.83334"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="pluginIcon.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="304.16852"
+     inkscape:cy="504.46499"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="2509"
+     inkscape:window-height="1376"
+     inkscape:window-x="51"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     units="px" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-191.16665)">
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot4560"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       transform="scale(0.26458333)"><flowRegion
+         id="flowRegion4562"><rect
+           id="rect4564"
+           width="243.44676"
+           height="181.82745"
+           x="182.83762"
+           y="798.26074" /></flowRegion><flowPara
+         id="flowPara4566"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:96px;font-family:'Noto Mono';-inkscape-font-specification:'Noto Mono'">Bfsdf</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot4568"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       transform="scale(0.26458333)"><flowRegion
+         id="flowRegion4570"><rect
+           id="rect4572"
+           width="817.21338"
+           height="3575.9399"
+           x="-83.842659"
+           y="608.35205" /></flowRegion><flowPara
+         id="flowPara4574"></flowPara></flowRoot>    <g
+       id="g4826"
+       transform="translate(-12.294065,147.27058)">
+      <rect
+         style="fill:#000000;fill-opacity:0;stroke:none;stroke-width:0.26392347;stroke-opacity:1"
+         y="44.160011"
+         x="12.294065"
+         height="105.56941"
+         width="105.56941"
+         id="rect3732" />
+      <rect
+         style="fill:#389fd6;fill-opacity:1;stroke:none;stroke-width:0.2111388;stroke-opacity:1"
+         y="54.716953"
+         x="22.851007"
+         height="84.455528"
+         width="84.455528"
+         id="rect3732-3" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path4584"
+         d="m 70.993798,54.691732 -48.170948,48.170948 17.363802,17.3638 c 4.832447,4.83245 9.884607,7.40258 15.156374,7.7101 5.293726,0.32949 10.115456,-1.68039 14.464658,-6.02959 6.326115,-6.32612 6.436056,-13.72853 0.329597,-22.207276 l 0.329232,-0.329231 c 3.338786,2.548017 6.798265,3.744617 10.378672,3.590857 3.602366,-0.13179 6.809573,-1.60325 9.621181,-4.414856 4.283309,-4.283309 6.018693,-8.742449 5.205961,-13.377204 -0.768796,-4.634755 -4.162388,-9.961407 -10.180985,-15.980005 z m 0.922652,11.40035 2.870277,2.870277 -15.189261,15.189261 -2.870277,-2.870276 z m 9.028493,9.035068 c 3.439603,3.508215 5.418995,6.625586 5.929831,9.350048 0.549145,2.833575 -0.493833,5.568613 -3.129716,8.204496 -2.789642,2.789642 -5.579654,3.997531 -8.369294,3.624112 -2.767679,-0.351452 -5.864573,-2.24046 -9.291218,-5.667105 L 65.758969,90.313124 Z M 51.587,86.421532 54.457277,89.291809 37.060591,106.6885 34.190314,103.81822 Z m 9.031781,9.03178 0.655175,0.655175 c 7.116879,7.116883 7.88537,13.464663 2.306087,19.043943 -6.018596,6.0186 -12.443193,5.61232 -19.274517,-1.219 L 43.222094,112.85 Z"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:96px;line-height:1.25;font-family:'Noto Mono';-inkscape-font-specification:'Noto Mono';letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.79374999;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path4737"
+         d="M 75.001401,139.17249 H 107.30653 V 106.86733 Z"
+         style="fill:#eda200;fill-opacity:1;stroke:none;stroke-width:0.85435092px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path4737-9"
+         d="m 107.30537,106.86852 -32.303969,32.30397 h 14.141773 l 18.162196,-18.1622 z"
+         style="fill:#db5860;fill-opacity:1;stroke:none;stroke-width:0.85435092px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="rect3732-3-6"
+         d="M 107.07593,92.956192 60.859631,139.17249 h 14.14177 l 32.074529,-32.07453 z"
+         style="fill:#59a869;fill-opacity:1;stroke:none;stroke-width:0.2111388;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path4798"
+         d="M 22.82285,102.86268 70.993798,54.691733 22.851007,54.716953 Z"
+         style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.94117647" />
+    </g>
+  </g>
+</svg>
