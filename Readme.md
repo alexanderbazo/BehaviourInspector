@@ -24,3 +24,7 @@ Log sessions are started and saved through a menu entry, implemented in `app/ui/
 | Behaviour | Listeners | Notes |
 |-----------|-----------|-------|
 | Menu usage | `app/listeners/events/ui/MenuActionListener` | Interaction with the main menu is logged by adding `ActionListeners` to all items of the IDE's `JMenuBar`. Listeners are added when a `PopupMenu` becomes visible for the first time. |
+| IDE Feedback | `app/listeners/events/topics/EditorHintListener` | Displayed editor hints are logged by subscribing to a `MessageBus` topic. |
+| Debugging | `app/listeners/events/topics/BreakpointListener` | Adding and removing of breakpoints is logged by subscribing to a `MessageBus` topic. |
+| Refactoring | `app/listeners/events/topics/RefactoringListener` | Started Refactoring processes and their outcome are logged by subscribing to a `MessageBus` topic. |
+| Code completion | `app/listeners/events/topics/CodeCompletionListener` | Triggering of the code completion feature is logged by subscribing to a `MessageBus` topic. |
