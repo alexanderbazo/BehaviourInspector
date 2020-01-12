@@ -11,23 +11,24 @@ import java.util.ArrayList;
 public class PopupMenuListener extends BaseListener implements javax.swing.event.PopupMenuListener {
 
     private MenuActionListener actionListener;
-    private ArrayList<JPopupMenu> knownMenus;
+    private ArrayList<MenuElement> knownElements;
 
     public PopupMenuListener() {
         actionListener = new MenuActionListener();
-        knownMenus = new ArrayList<JPopupMenu>();
+        knownElements = new ArrayList<MenuElement>();
     }
 
     @Override
     public void popupMenuWillBecomeVisible(PopupMenuEvent popupMenuEvent) {
         JPopupMenu menu = (JPopupMenu) popupMenuEvent.getSource();
-        if(knownMenus.contains(menu)) {
-            return;
-        }
+
         for(MenuElement element: menu.getSubElements()) {
+            if(knownElements.contains(element)) {
+                continue;
+            }
             processMenuElement(element);
+            knownElements.add(element);
         }
-        knownMenus.add(menu);
     }
 
     @Override

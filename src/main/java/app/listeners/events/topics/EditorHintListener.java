@@ -9,5 +9,6 @@ public class EditorHintListener extends BaseListener implements com.intellij.cod
 
     @Override
     public void hintShown(Project project, @NotNull LightweightHint hint, int flags) {
+        getApplicationService().inspectTopicAction("EditorHint", "Hint shown");
     }
 }

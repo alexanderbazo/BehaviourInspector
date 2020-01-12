@@ -8,6 +8,6 @@ import java.awt.event.ActionListener;
 public class MenuActionListener extends BaseListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        getInspector().inspectMenuAction(actionEvent);
+        getApplicationService().inspectMenuAction(actionEvent);
     }
 }

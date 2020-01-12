@@ -10,14 +10,17 @@ This plugin aims to log as many of the user's interactions with the IntelliJ IDE
 
 The plugins functionality is provides through *services*:
 
-- `LogService` logs and syncs interaction events, using the [`PluginHelper`](https://github.com/OOP-Regensburg/PluginHelper), provided by `libs/PluginHelper.jar`.
-- `ManagerService` initializes all necessary event listeners.
-- `InspectorService` is used by all listeners to processes and log events. 
+- `app/services/application/ApplicationService` provides the plugin's basic functionality, allowing log sessions to be started and saved.
+- `app/services/log/LogService` logs and syncs interaction events, using the [`PluginHelper`](https://github.com/OOP-Regensburg/PluginHelper), provided by `libs/PluginHelper.jar`.
 
-`App` serves as the main entry point, triggered when a project is opened. Here, the `LogService` is started and the initializing routines from `ManagerService`are called.
+
+`App` serves as the main entry point, triggered when a project is opened. During runtime the current project can be accessed from a static member.
+
+Log sessions are started and saved through a menu entry, implemented in `app/ui/SessionAction`, and will be synced to a remote server.
+
 
 ## Implemented/Watched behviour
 
 | Behaviour | Listeners | Notes |
 |-----------|-----------|-------|
-| Menu usage | `MenuActionListener` | Interaction with the main menu is logged by adding `ActionListeners` to all items of the IDE's `JMenuBar`. Listeners are added when a `PopupMenu` becomes visible for the first time. |
+| Menu usage | `app/listeners/events/ui/MenuActionListener` | Interaction with the main menu is logged by adding `ActionListeners` to all items of the IDE's `JMenuBar`. Listeners are added when a `PopupMenu` becomes visible for the first time. |

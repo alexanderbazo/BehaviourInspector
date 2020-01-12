@@ -9,14 +9,17 @@ public class BreakpointListener extends BaseListener implements XBreakpointListe
 
     @Override
     public void breakpointAdded(@NotNull XBreakpoint breakpoint) {
+        getApplicationService().inspectTopicAction("Breakpoint", "Breakpoint added");
     }
 
     @Override
     public void breakpointRemoved(@NotNull XBreakpoint breakpoint) {
+        getApplicationService().inspectTopicAction("Breakpoint", "Breakpoint removed");
     }
 
     @Override
     public void breakpointChanged(@NotNull XBreakpoint breakpoint) {
+        getApplicationService().inspectTopicAction("Breakpoint", "Breakpoint changed");
 
     }
 }

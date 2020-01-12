@@ -1,24 +1,18 @@
 package app.listeners.events.base;
 
-import app.services.InspectorService;
-import app.services.ManagerService;
+import app.services.application.ApplicationService;
 import com.intellij.openapi.components.ServiceManager;
 
 public class BaseListener {
 
-    private ManagerService manager;
-    private InspectorService inspector;
+    private ApplicationService manager;
 
     public BaseListener() {
-        manager = ServiceManager.getService(ManagerService.class);
-        inspector = ServiceManager.getService(InspectorService.class);
+        manager = ServiceManager.getService(ApplicationService.class);
     }
 
-    protected ManagerService getManager() {
+    protected ApplicationService getApplicationService() {
         return manager;
     }
 
-    protected InspectorService getInspector() {
-        return inspector;
-    }
 }
