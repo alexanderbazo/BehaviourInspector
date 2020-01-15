@@ -43,13 +43,13 @@ public class SessionAction extends AnAction {
     private void setStatusBarState(Boolean isRunning) {
         StatusBar statusBar = WindowManager.getInstance().getStatusBar(App.getCurrentProject());
 
-        if (statusBar != null && isRunning) {
-            statusBar.setInfo(SESSION_RUNNING_TEXT);
-        } else {
-            statusBar.setInfo(SESSION_STOPPED_TEXT);
+        if (statusBar != null) {
+            if (isRunning) {
+                statusBar.setInfo(SESSION_RUNNING_TEXT);
+            } else {
+                statusBar.setInfo(SESSION_STOPPED_TEXT);
+            }
         }
-
-
     }
 
 }
