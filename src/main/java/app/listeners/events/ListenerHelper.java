@@ -12,6 +12,7 @@ import com.intellij.util.messages.MessageBus;
 import com.intellij.xdebugger.breakpoints.XBreakpointListener;
 
 import javax.swing.*;
+import javax.swing.event.PopupMenuEvent;
 import java.awt.*;
 
 public class ListenerHelper {
