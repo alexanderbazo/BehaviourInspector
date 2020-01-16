@@ -53,6 +53,7 @@ public class LogService implements SyncProgressListener, Values {
         currentLog.log(localUser.getSessionID(), LogDataType.IDE, label, menuAction);
     }
 
+    //TODO: change google doc so that privacy policy is removed
     @Override
     public void onFinished() {
         try {
