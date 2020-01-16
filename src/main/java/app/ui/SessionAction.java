@@ -8,14 +8,10 @@ import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.ui.MessageType;
 import com.intellij.openapi.ui.popup.Balloon;
 import com.intellij.openapi.ui.popup.JBPopupFactory;
-import com.intellij.openapi.wm.IdeFrame;
 import com.intellij.openapi.wm.StatusBar;
-import com.intellij.openapi.wm.StatusBarWidget;
 import com.intellij.openapi.wm.WindowManager;
 import com.intellij.ui.awt.RelativePoint;
 import org.jetbrains.annotations.NotNull;
-
-import javax.swing.*;
 
 public class SessionAction extends AnAction {
 
@@ -35,12 +31,11 @@ public class SessionAction extends AnAction {
         switch (applicationService.getState()) {
             case IDLE:
                 applicationService.startSession();
-                setStatusBarState(true);
+                setStatusBarState();
                 e.getPresentation().setText(SAVE_SESSION_TEXT);
                 break;
             case RECORDING:
                 applicationService.saveSession();
-                setStatusBarState(false);
                 e.getPresentation().setText(START_SESSION_TEXT);
                 break;
         }
@@ -48,9 +43,9 @@ public class SessionAction extends AnAction {
     }
 
     //show hint in statusbar when the plugin is running
-    private void setStatusBarState(Boolean isRunning) {
+    private void setStatusBarState() {
         StatusBar statusBar = WindowManager.getInstance().getStatusBar(App.getCurrentProject());
-        if (isRunning) {
+        if (statusBar != null) {
             JBPopupFactory.getInstance()
                     .createHtmlTextBalloonBuilder(SESSION_RUNNING_TEXT, MessageType.INFO, null)
                     .setFadeoutTime(7500)
