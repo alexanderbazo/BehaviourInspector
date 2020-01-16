@@ -26,7 +26,6 @@ public class DataPrivacyDialog {
         textArea.setText(msg);
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
-        textArea.setBackground(Color.ORANGE);
         textArea.setCaretPosition(0);
 
         JBScrollPane scrollPane = new JBScrollPane(textArea);
@@ -44,8 +43,13 @@ public class DataPrivacyDialog {
         return dialog;
     }
 
-    public static void dataPrivacyDeclined(String title, String msg){
-        JOptionPane.showMessageDialog(null, msg, title, JOptionPane.INFORMATION_MESSAGE);
+    public static void showStatusDialog(String title, String msg){
+        JTextArea area = new JTextArea(10, 70);
+        area.setLineWrap(true);
+        area.setWrapStyleWord(true);
+        area.setText(msg);
+
+        JOptionPane.showMessageDialog(null, area, title, JOptionPane.INFORMATION_MESSAGE);
     }
 
     private static String getCustomDataPrivacyMessage(String id){
@@ -67,7 +71,7 @@ public class DataPrivacyDialog {
                 "- Verwendete Men\u00fceintr\u00e4ge\n" +
                 "- Verwendete IDE-Funktionen\n\n"+
                 "ID: "+ id +
-                "\n\n Bitte best\u00E4tigen Sie, dass die durch Sie generierten Interaktionsdaten anonymisiert" +
+                "\n\nBitte best\u00E4tigen Sie, dass die durch Sie generierten Interaktionsdaten anonymisiert" +
                 " im Rahme von Forschungsvorhaben verwendet werden d\u00fcrfen.\n";
 
         return new String(msg.getBytes(StandardCharsets.UTF_8), StandardCharsets.UTF_8);

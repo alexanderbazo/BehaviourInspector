@@ -11,6 +11,8 @@ public interface Values {
     public static final String CONFIRMATION_DATA_SECURITY_TITLE = "Datenschutzerkl\u00E4rung";
 
     public static final String DATA_PRIVACY_DECLINED_TITLE = "Fehlende Zustimmung";
-    public static final String DATA_PRIVACY_DECLINED_MESSAGE = "Sie haben der Datenschutzerkl\u00E4rung widersprochen.\nDie aufgezeichneten Interaktionsdaten werden gel\u00f6scht.";
+    public static final String DATA_PRIVACY_DECLINED_MESSAGE = "Sie haben der Datenschutzerkl\u00E4rung widersprochen.\nDie aufgezeichneten Interaktionsdaten sind gel\u00f6scht.";
 
+    public static final String DATA_PRIVACY_ACCEPTED_TITLE = "Zustimmung";
+    public static final String DATA_PRIVACY_ACCEPTED_MESSAGE = "Sie haben der Datenschutzerkl\u00E4rung zugestimmt und die Daten hochgeladen.\n\nVielen Dank!\n\nSie werden gleich zu einem Formular weitergeleitet, \u00fcber das Sie 0,25 Versuchspersonenstunden f\u00fcr den Studiengang Medieninformatik beantragen k\u00f6nnen.\nBitte geben Sie dabei den Code OOP-1337 ein.";
 }

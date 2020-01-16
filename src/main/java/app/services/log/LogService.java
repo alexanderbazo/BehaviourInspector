@@ -40,10 +40,11 @@ public class LogService implements SyncProgressListener, Values {
             if (dataSecurity == SecurityResponse.ACCEPT) {
                 UserResponse response = UserDialogManager.showConfirmationDialog(UPLOAD_CONFIRMATION_DIALOG_MSG, UPLOAD_CONFIRMATION_DIALOG_TITLE);
                 if (response == UserResponse.ACCEPT) {
+                    DataPrivacyDialog.showStatusDialog(Values.DATA_PRIVACY_ACCEPTED_TITLE, Values.DATA_PRIVACY_ACCEPTED_MESSAGE);
                     LogManager.syncLog(currentLog, localUser, UPLOAD_SERVER_URL, this);
                 }
             } else if (dataSecurity == SecurityResponse.REJECT){
-                DataPrivacyDialog.dataPrivacyDeclined(Values.DATA_PRIVACY_DECLINED_TITLE, Values.DATA_PRIVACY_DECLINED_MESSAGE);
+                DataPrivacyDialog.showStatusDialog(Values.DATA_PRIVACY_DECLINED_TITLE, Values.DATA_PRIVACY_DECLINED_MESSAGE);
             }
         }
     }
