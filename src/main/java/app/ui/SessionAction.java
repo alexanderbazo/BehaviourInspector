@@ -5,9 +5,17 @@ import app.services.application.ApplicationService;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.components.ServiceManager;
+import com.intellij.openapi.ui.MessageType;
+import com.intellij.openapi.ui.popup.Balloon;
+import com.intellij.openapi.ui.popup.JBPopupFactory;
+import com.intellij.openapi.wm.IdeFrame;
 import com.intellij.openapi.wm.StatusBar;
+import com.intellij.openapi.wm.StatusBarWidget;
 import com.intellij.openapi.wm.WindowManager;
+import com.intellij.ui.awt.RelativePoint;
 import org.jetbrains.annotations.NotNull;
+
+import javax.swing.*;
 
 public class SessionAction extends AnAction {
 
@@ -42,13 +50,13 @@ public class SessionAction extends AnAction {
     //show hint in statusbar when the plugin is running
     private void setStatusBarState(Boolean isRunning) {
         StatusBar statusBar = WindowManager.getInstance().getStatusBar(App.getCurrentProject());
-
-        if (statusBar != null) {
-            if (isRunning) {
-                statusBar.setInfo(SESSION_RUNNING_TEXT);
-            } else {
-                statusBar.setInfo(SESSION_STOPPED_TEXT);
-            }
+        if (isRunning) {
+            JBPopupFactory.getInstance()
+                    .createHtmlTextBalloonBuilder(SESSION_RUNNING_TEXT, MessageType.INFO, null)
+                    .setFadeoutTime(7500)
+                    .createBalloon()
+                    .show(RelativePoint.getCenterOf(statusBar.getComponent()),
+                            Balloon.Position.atRight);
         }
     }
 
