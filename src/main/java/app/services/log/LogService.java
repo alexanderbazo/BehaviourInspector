@@ -1,5 +1,7 @@
 package app.services.log;
 
+import app.ui.DataPrivacyDialog;
+import app.ui.SecurityResponse;
 import com.intellij.openapi.components.ServiceManager;
 import data.Values;
 import de.ur.mi.pluginhelper.User.User;
@@ -31,11 +33,17 @@ public class LogService implements SyncProgressListener, Values {
         currentLog = LogManager.openLog(localUser.getID(), LOG_TITLE);
     }
 
+    //Sync log only if user accepts privacy policy
     public void syncCurrentLog() {
         if (currentLog != null) {
-            UserResponse response = UserDialogManager.showConfirmationDialog(UPLOAD_CONFIRMATION_DIALOG_MSG, UPLOAD_CONFIRMATION_DIALOG_TITLE);
-            if (response == UserResponse.ACCEPT) {
-                LogManager.syncLog(currentLog, localUser, UPLOAD_SERVER_URL, this);
+            SecurityResponse dataSecurity =  DataPrivacyDialog.showConfirmationDialog(localUser.getID(), CONFIRMATION_DATA_SECURITY_TITLE);
+            if (dataSecurity == SecurityResponse.ACCEPT) {
+                UserResponse response = UserDialogManager.showConfirmationDialog(UPLOAD_CONFIRMATION_DIALOG_MSG, UPLOAD_CONFIRMATION_DIALOG_TITLE);
+                if (response == UserResponse.ACCEPT) {
+                    LogManager.syncLog(currentLog, localUser, UPLOAD_SERVER_URL, this);
+                }
+            } else if (dataSecurity == SecurityResponse.REJECT){
+                DataPrivacyDialog.dataPrivacyDeclined(Values.DATA_PRIVACY_DECLINED_TITLE, Values.DATA_PRIVACY_DECLINED_MESSAGE);
             }
         }
     }

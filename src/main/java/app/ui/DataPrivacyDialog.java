@@ -6,12 +6,10 @@
 package app.ui;
 
 import com.intellij.ui.components.JBScrollPane;
-import javafx.util.StringConverter;
 
+import javax.swing.*;
 import java.awt.*;
 import java.nio.charset.StandardCharsets;
-import javax.swing.*;
-import javax.swing.border.Border;
 
 public class DataPrivacyDialog {
 
@@ -33,7 +31,7 @@ public class DataPrivacyDialog {
 
         JBScrollPane scrollPane = new JBScrollPane(textArea);
 
-        int result = JOptionPane.showOptionDialog((Component)null, scrollPane, title, JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, null);
+        int result = JOptionPane.showOptionDialog(null, scrollPane, title, JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, null);
 
         return SecurityResponse.values()[result];
     }
@@ -47,10 +45,7 @@ public class DataPrivacyDialog {
     }
 
     public static void dataPrivacyDeclined(String title, String msg){
-        System.out.println("ABGELEHNT");
-
         JOptionPane.showMessageDialog(null, msg, title, JOptionPane.INFORMATION_MESSAGE);
-
     }
 
     private static String getCustomDataPrivacyMessage(String id){
