@@ -39,7 +39,6 @@ public class SessionAction extends AnAction {
                 e.getPresentation().setText(START_SESSION_TEXT);
                 break;
         }
-
     }
 
     //show hint in statusbar when the plugin is running

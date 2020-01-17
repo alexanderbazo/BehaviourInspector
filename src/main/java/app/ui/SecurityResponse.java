@@ -2,8 +2,7 @@ package app.ui;
 
 public enum SecurityResponse {
     ACCEPT,
-    REJECT,
-    CANCEL;
+    REJECT;
 
     private SecurityResponse(){
 
