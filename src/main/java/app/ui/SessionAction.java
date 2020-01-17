@@ -41,17 +41,27 @@ public class SessionAction extends AnAction {
         }
     }
 
-    //show hint in statusbar when the plugin is running
+    //show balloon, when plugin is started
+    //TODO: Add hint in statusbar, that plugin is running
     private void setStatusBarState() {
         StatusBar statusBar = WindowManager.getInstance().getStatusBar(App.getCurrentProject());
         if (statusBar != null) {
-            JBPopupFactory.getInstance()
-                    .createHtmlTextBalloonBuilder(SESSION_RUNNING_TEXT, MessageType.INFO, null)
-                    .setFadeoutTime(7500)
-                    .createBalloon()
-                    .show(RelativePoint.getCenterOf(statusBar.getComponent()),
-                            Balloon.Position.atRight);
+            createBalloon(statusBar);
+            showPermanentHint(statusBar);
         }
+    }
+
+    private void showPermanentHint(StatusBar statusBar) {
+
+    }
+
+    private void createBalloon(StatusBar bar) {
+        JBPopupFactory.getInstance()
+                .createHtmlTextBalloonBuilder(SESSION_RUNNING_TEXT, MessageType.INFO, null)
+                .setFadeoutTime(7500)
+                .createBalloon()
+                .show(RelativePoint.getCenterOf(bar.getComponent()),
+                        Balloon.Position.atRight);
     }
 
 }
