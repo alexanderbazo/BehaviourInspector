@@ -9,8 +9,6 @@ import de.ur.mi.pluginhelper.logger.Log;
 import de.ur.mi.pluginhelper.logger.LogDataType;
 import de.ur.mi.pluginhelper.logger.LogManager;
 import de.ur.mi.pluginhelper.logger.SyncProgressListener;
-import de.ur.mi.pluginhelper.ui.UserDialogManager;
-import de.ur.mi.pluginhelper.ui.UserResponse;
 
 import java.awt.*;
 import java.net.URI;
@@ -49,7 +47,7 @@ public class LogService implements SyncProgressListener, Values {
         currentLog.log(localUser.getSessionID(), LogDataType.IDE, label, menuAction);
     }
 
-    //TODO: change google doc so that privacy policy is removed
+    //open Google Doc for Versuchspersonenstunden after user agrees to upload and privacy
     @Override
     public void onFinished() {
         try {
