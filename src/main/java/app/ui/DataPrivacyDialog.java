@@ -54,7 +54,7 @@ public class DataPrivacyDialog {
         String msg = "<h1><b>Vielen Dank f\u00fcr die Teilnahme an dieser Studie.</h1>"+
                 "<p>Sobald Sie die Datenschutzerkl\u00e4rung akzeptiert haben, werden die geloggten Daten auf den Server hochgeladen. <br>"+
                 "Im Anschluss werden Sie zu einem Google Formular weitergeleitet, in dem Sie sich 0,25 Versuchspersonenstunden gutschreiben lassen k\u00f6nnen.<br><br>"+
-                "Daf\u00fcr ben\u00f6tigen Sie den <b>Best\u00e4tigungscode OOP-1337.</b></p>"+
+                "Daf\u00fcr ben\u00f6tigen Sie den <b>Best\u00e4tigungscode OOP-1337.</b> Bitte merken Sie sich diesen Code oder schreiben Sie Ihn sich auf.</p>"+
                 "<h2>Datenschutzerkl\u00e4rung</h2>" +
                 "<p>Sie haben ein Plugin f\u00fcr die Entwicklungsumgebung IntelliJ verwendet." +
                 "Durch die Nutzung wurden Interaktionsdaten aufgezeichnet<br>" +
