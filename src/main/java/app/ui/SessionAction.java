@@ -11,14 +11,19 @@ import com.intellij.openapi.ui.popup.JBPopupFactory;
 import com.intellij.openapi.wm.StatusBar;
 import com.intellij.openapi.wm.WindowManager;
 import com.intellij.ui.awt.RelativePoint;
+import data.Values;
 import org.jetbrains.annotations.NotNull;
+
+import javax.swing.*;
+import java.awt.*;
 
 public class SessionAction extends AnAction {
 
     private static final String START_SESSION_TEXT = "Start Session";
     private static final String SAVE_SESSION_TEXT = "Save Session";
     private static final String SESSION_RUNNING_TEXT = "BI Plugin is running";
-    private static final String SESSION_STOPPED_TEXT = "Thanks for participating";
+    private static final Color CUSTOM_GREEN = new Color(215, 245, 184);
+    private static final int PLUGIN_BAR_HEIGHT = 50;
 
     private ApplicationService applicationService;
 
@@ -31,36 +36,55 @@ public class SessionAction extends AnAction {
         switch (applicationService.getState()) {
             case IDLE:
                 applicationService.startSession();
-                setStatusBarState();
+                setStatusBarState(true);
                 e.getPresentation().setText(SAVE_SESSION_TEXT);
                 break;
             case RECORDING:
                 applicationService.saveSession();
+                setStatusBarState(false);
                 e.getPresentation().setText(START_SESSION_TEXT);
                 break;
         }
     }
 
-    //show balloon, when plugin is started
-    //TODO: Add hint in statusbar, that plugin is running
-    private void setStatusBarState() {
+    //make visible that plugin is running
+    private void setStatusBarState(boolean isRunning) {
         StatusBar statusBar = WindowManager.getInstance().getStatusBar(App.getCurrentProject());
+        JFrame jFrame = WindowManager.getInstance().getFrame(App.getCurrentProject());
+        JPanel hint = createPermanentHint(jFrame);
+
+        jFrame.add(hint, BorderLayout.SOUTH);
+
         if (statusBar != null) {
-            createBalloon(statusBar);
-            showPermanentHint(statusBar);
+            if (isRunning) {
+                createBalloon(statusBar);
+                hint.setVisible(true);
+                statusBar.setInfo(Values.PLUGIN_RUNNING_STATUS);
+            } else {
+                hint.setVisible(false);
+                statusBar.setInfo(Values.PLUGIN_STOPPED_STATUS);
+            }
         }
     }
 
-    private void showPermanentHint(StatusBar statusBar) {
+    //shows permanent line that plugin is running at bottom of IDE
+    private JPanel createPermanentHint(JFrame jFrame) {
+        JPanel statusPanel = new JPanel();
+        statusPanel.setBackground(CUSTOM_GREEN);
+        statusPanel.setPreferredSize(new Dimension(jFrame.getWidth(), PLUGIN_BAR_HEIGHT));
+        JLabel statusLabel = new JLabel(Values.PLUGIN_RUNNING_BAR);
+        statusPanel.add(statusLabel);
 
+        return statusPanel;
     }
 
+    //creates single time popup that plugin was started
     private void createBalloon(StatusBar bar) {
         JBPopupFactory.getInstance()
                 .createHtmlTextBalloonBuilder(SESSION_RUNNING_TEXT, MessageType.INFO, null)
                 .setFadeoutTime(7500)
                 .createBalloon()
-                .show(RelativePoint.getCenterOf(bar.getComponent()),
+                .show(RelativePoint.getNorthEastOf(bar.getComponent()),
                         Balloon.Position.atRight);
     }
 
