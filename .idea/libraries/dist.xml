@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="dist">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dist/BehaviourInspector-191-0.1.zip!/" />
+      <root url="jar://$PROJECT_DIR$/dist/BehaviourInspector-192-0.1.zip!/" />
+      <root url="jar://$PROJECT_DIR$/dist/BehaviourInspector-193-0.1.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

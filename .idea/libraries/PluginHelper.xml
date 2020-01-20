@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="PluginHelper">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/PluginHelper.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
