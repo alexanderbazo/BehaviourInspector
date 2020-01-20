@@ -1,9 +1,9 @@
 package app.services.log;
 
-import app.ui.DataPrivacyDialog;
-import app.ui.SecurityResponse;
+import app.ui.dataprivacy.DataPrivacyDialog;
+import app.ui.dataprivacy.SecurityResponse;
 import com.intellij.openapi.components.ServiceManager;
-import data.Values;
+import data.StringValues;
 import de.ur.mi.pluginhelper.User.User;
 import de.ur.mi.pluginhelper.logger.Log;
 import de.ur.mi.pluginhelper.logger.LogDataType;
@@ -13,7 +13,7 @@ import de.ur.mi.pluginhelper.logger.SyncProgressListener;
 import java.awt.*;
 import java.net.URI;
 
-public class LogService implements SyncProgressListener, Values {
+public class LogService implements SyncProgressListener, StringValues {
 
     private User localUser;
     private Log currentLog;
@@ -38,7 +38,7 @@ public class LogService implements SyncProgressListener, Values {
             if (dataSecurity == SecurityResponse.ACCEPT) {
                 LogManager.syncLog(currentLog, localUser, UPLOAD_SERVER_URL, this);
             } else if (dataSecurity == SecurityResponse.REJECT){
-                DataPrivacyDialog.showStatusDialog(Values.DATA_PRIVACY_DECLINED_TITLE, Values.DATA_PRIVACY_DECLINED_MESSAGE);
+                DataPrivacyDialog.showStatusDialog(StringValues.DATA_PRIVACY_DECLINED_TITLE, StringValues.DATA_PRIVACY_DECLINED_MESSAGE);
             }
         }
     }

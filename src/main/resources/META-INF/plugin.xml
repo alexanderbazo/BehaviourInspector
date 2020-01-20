@@ -14,10 +14,10 @@
     </extensions>
 
     <actions>
-        <group id="BehaviourInspector" text="Behaviour Inspector" description="Behaviour Inspector Menu"  popup="true">
-            <action id="VssIntegration.TestAction" class="app.ui.SessionAction" text="Start Session" description="Start recording interaction behaviour."/>
+        <group id="BehaviourInspector" text="OOP" description="Behaviour Inspector (OOP) Menu"  popup="true">
+            <action id="VssIntegration.TestAction" class="app.ui.SessionAction" text="Sitzung aufzeichnen" description="Startet das Aufzeichnen der Interaktionsdaten."/>
             <separator/>
-            <add-to-group group-id="MainMenu" relative-to-action="HelpMenu" anchor="after"/>
+            <add-to-group group-id="MainMenu" relative-to-action="HelpMenu" anchor="before"/>
         </group>
     </actions>
 

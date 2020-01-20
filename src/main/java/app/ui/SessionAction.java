@@ -11,18 +11,15 @@ import com.intellij.openapi.ui.popup.JBPopupFactory;
 import com.intellij.openapi.wm.StatusBar;
 import com.intellij.openapi.wm.WindowManager;
 import com.intellij.ui.awt.RelativePoint;
-import data.Values;
+import data.StringValues;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class SessionAction extends AnAction {
+public class SessionAction extends AnAction implements StringValues {
 
-    private static final String START_SESSION_TEXT = "Start Session";
-    private static final String SAVE_SESSION_TEXT = "Save Session";
-    private static final String SESSION_RUNNING_TEXT = "BI Plugin is running";
-    private static final Color CUSTOM_GREEN = new Color(215, 245, 184);
+    private static final Color YELLOW = new Color(237,162,0);
     private static final int PLUGIN_BAR_HEIGHT = 50;
 
     private ApplicationService applicationService;
@@ -57,12 +54,11 @@ public class SessionAction extends AnAction {
 
         if (statusBar != null) {
             if (isRunning) {
-                createBalloon(statusBar);
                 hint.setVisible(true);
-                statusBar.setInfo(Values.PLUGIN_RUNNING_STATUS);
+                statusBar.setInfo(StringValues.PLUGIN_RUNNING_STATUS);
             } else {
                 hint.setVisible(false);
-                statusBar.setInfo(Values.PLUGIN_STOPPED_STATUS);
+                statusBar.setInfo(StringValues.PLUGIN_STOPPED_STATUS);
             }
         }
     }
@@ -70,22 +66,13 @@ public class SessionAction extends AnAction {
     //shows permanent line that plugin is running at bottom of IDE
     private JPanel createPermanentHint(JFrame jFrame) {
         JPanel statusPanel = new JPanel();
-        statusPanel.setBackground(CUSTOM_GREEN);
+        statusPanel.setBackground(YELLOW);
         statusPanel.setPreferredSize(new Dimension(jFrame.getWidth(), PLUGIN_BAR_HEIGHT));
-        JLabel statusLabel = new JLabel(Values.PLUGIN_RUNNING_BAR);
+        JLabel statusLabel = new JLabel(StringValues.PLUGIN_RUNNING_BAR);
+        statusLabel.setForeground(Color.WHITE);
         statusPanel.add(statusLabel);
 
         return statusPanel;
-    }
-
-    //creates single time popup that plugin was started
-    private void createBalloon(StatusBar bar) {
-        JBPopupFactory.getInstance()
-                .createHtmlTextBalloonBuilder(SESSION_RUNNING_TEXT, MessageType.INFO, null)
-                .setFadeoutTime(7500)
-                .createBalloon()
-                .show(RelativePoint.getNorthEastOf(bar.getComponent()),
-                        Balloon.Position.atRight);
     }
 
 }

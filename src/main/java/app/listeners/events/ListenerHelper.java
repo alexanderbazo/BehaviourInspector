@@ -7,12 +7,12 @@ import com.intellij.codeInsight.completion.CompletionPhaseListener;
 import com.intellij.openapi.actionSystem.impl.ActionMenu;
 import com.intellij.openapi.fileEditor.FileEditorManager;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.project.ProjectManager;
 import com.intellij.openapi.wm.impl.IdeFrameImpl;
 import com.intellij.util.messages.MessageBus;
 import com.intellij.xdebugger.breakpoints.XBreakpointListener;
 
 import javax.swing.*;
-import javax.swing.event.PopupMenuEvent;
 import java.awt.*;
 
 public class ListenerHelper {
@@ -37,6 +37,8 @@ public class ListenerHelper {
         bus.connect().subscribe(CompletionPhaseListener.TOPIC, new CodeCompletionListener());
         bus.connect().subscribe(EditorHintListener.TOPIC, new EditorHintListener());
         bus.connect().subscribe(XBreakpointListener.TOPIC, new BreakpointListener());
+        bus.connect().subscribe(ProjectManager.TOPIC, new ProjectListener());
+        bus.connect().subscribe(ProblemListener.TOPIC, new ProblemListener());
     }
 
     private static  JMenuBar findMenuBar(Container parent) {

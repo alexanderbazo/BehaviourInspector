@@ -1,4 +1,4 @@
-package app.ui;
+package app.ui.dataprivacy;
 
 public enum SecurityResponse {
     ACCEPT,
