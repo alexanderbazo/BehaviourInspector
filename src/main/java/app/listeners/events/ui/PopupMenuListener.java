@@ -21,7 +21,6 @@ public class PopupMenuListener extends BaseListener implements javax.swing.event
     @Override
     public void popupMenuWillBecomeVisible(PopupMenuEvent popupMenuEvent) {
         JPopupMenu menu = (JPopupMenu) popupMenuEvent.getSource();
-
         for(MenuElement element: menu.getSubElements()) {
             if(knownElements.contains(element)) {
                 continue;

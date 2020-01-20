@@ -38,7 +38,6 @@ public class ListenerHelper {
         bus.connect().subscribe(XBreakpointListener.TOPIC, new BreakpointListener());
     }
 
-
     private static  JMenuBar findMenuBar(Container parent) {
         if (parent.getParent() != null) {
             return findMenuBar(parent.getParent());
