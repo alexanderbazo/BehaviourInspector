@@ -6,7 +6,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class CommandListener extends BaseListener implements com.intellij.openapi.command.CommandListener {
 
-    private static final String[] BLACKLLIST = {"", "Typing", "Enter", "null", "Backspace"};
+    private static final String[] BLACKLLIST = {"", "Typing", "Tab", "Enter", "null", "Backspace"};
 
     private boolean isOnBlacklist(CommandEvent event) {
         for(String restrictedCommand: BLACKLLIST) {
