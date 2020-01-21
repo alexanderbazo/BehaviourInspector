@@ -23,6 +23,6 @@ public class ProjectListener extends BaseListener implements ProjectManagerListe
 
     @Override
     public void projectClosingBeforeSave(@NotNull Project project) {
-
+        getApplicationService().saveSession();
     }
 }
