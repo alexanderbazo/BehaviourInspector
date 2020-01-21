@@ -53,7 +53,11 @@ public class ApplicationService {
     }
 
     public void inspectMenuAction(ActionEvent event) {
-        logService.logAction("Menu", event.getActionCommand());
+        inspectAction("Menu", event.getActionCommand());
+    }
+
+    public void inspectIdeAction(String category, String action) {
+        inspectAction(category, action);
     }
 
     public void inspectAction(String label, String action) {
