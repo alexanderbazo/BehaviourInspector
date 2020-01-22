@@ -36,5 +36,5 @@ public interface StringValues {
             "<li>Verwendete Men\u00fceintr\u00e4ge </li>" +
             "<li>Verwendete IDE-Funktionen</li></ul>";
     String DATA_PRIVACY_DECLINED_TITLE = "Ihre Daten werden nicht verwendet";
-    String DATA_PRIVACY_DECLINED_MESSAGE = "<div style=\"font-family: sans-serif\"><h1>Ihre Daten werden nicht verwendet</h1><p>Sie haben der Datenschutzerkl\u00E4rung widersprochen.\nDie aufgezeichneten Interaktionsdaten werden <b>nicht auf den Server hochgeladen</b> und werden automatisch gel\u00f6scht, sobald Sie sich von diesem PC abmelden.</p></div>";
+    String DATA_PRIVACY_DECLINED_MESSAGE = "<div style=\"font-family: sans-serif\"><h1>Ihre Daten werden nicht verwendet</h1><p>Sie haben der Datenschutzerkl\u00E4rung widersprochen.\nDie aufgezeichneten Interaktionsdaten werden <b>nicht auf den Server hochgeladen</b> und werden automatisch gel\u00f6scht, sobald Sie sich von dem CIP-Pool-Rechner abmelden. <p>Sollten Sie Ihren eigenen Rechner verwendet haben, l\u00f6schen Sie bitte den Ordner <code>.OOP-Plugin</code> in Ihrem Benutzerverzeichnis.</p></div>";
 }

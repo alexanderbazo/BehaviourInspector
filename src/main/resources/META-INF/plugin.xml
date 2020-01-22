@@ -21,6 +21,6 @@
         </group>
     </actions>
 
-    <idea-version since-build="2019.2"/>
+    <idea-version since-build="2019.1"/>
 
 </idea-plugin>
