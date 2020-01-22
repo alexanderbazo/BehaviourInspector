@@ -31,11 +31,12 @@ public class DataPrivacyDialog implements StringValues {
     }
 
     public static void showStatusDialog(String title, String msg){
-        JTextArea area = new JTextArea(5, 70);
-        area.setLineWrap(true);
-        area.setWrapStyleWord(true);
-        area.setText(msg);
-        JOptionPane.showMessageDialog(null, area, title, JOptionPane.INFORMATION_MESSAGE);
+        JEditorPane editorPane = new JEditorPane("text/html", msg);
+        editorPane.setEditable(false);
+        JBScrollPane scrollPane = new JBScrollPane(editorPane);
+        editorPane.setCaretPosition(0);
+        scrollPane.setPreferredSize(new Dimension(500,200));
+        JOptionPane.showMessageDialog(null, scrollPane, title, JOptionPane.INFORMATION_MESSAGE);
     }
 
     private static String getCustomDataPrivacyMessage(String id){
