@@ -2,21 +2,36 @@ package app.listeners.events.topics;
 
 import app.listeners.events.base.BaseListener;
 import com.intellij.openapi.project.Project;
+import com.intellij.ui.HintListener;
 import com.intellij.ui.LightweightHint;
+import data.Measurements;
 import org.jetbrains.annotations.NotNull;
 
-public class EditorHintListener extends BaseListener implements com.intellij.codeInsight.hint.EditorHintListener {
+import java.util.EventObject;
 
-    private static final long MIN_DELAY = 500;
-    private long lastTrigger = 0;
+public class EditorHintListener extends BaseListener implements com.intellij.codeInsight.hint.EditorHintListener, HintListener, Measurements {
+
+    private long lastHintShown = 0;
+    private long lastHintHidden = 0;
 
     @Override
     public void hintShown(Project project, @NotNull LightweightHint hint, int flags) {
         long now = System.currentTimeMillis();
-        if(now - lastTrigger < MIN_DELAY) {
+        if (now - lastHintShown < MIN_EVENT_DELAY_IN_MS) {
             return;
         }
+        hint.addHintListener(this);
         getApplicationService().inspectTopicAction("EditorHint", "Hint shown");
-        lastTrigger = now;
+        lastHintShown = now;
+    }
+
+    @Override
+    public void hintHidden(@NotNull EventObject event) {
+        long now = System.currentTimeMillis();
+        if (now - lastHintHidden < MIN_EVENT_DELAY_IN_MS) {
+            return;
+        }
+        getApplicationService().inspectTopicAction("EditorHint", "Hint hidden");
+        lastHintHidden = now;
     }
 }
