@@ -43,8 +43,8 @@ public class LogService implements SyncProgressListener, StringValues {
         }
     }
 
-    public void logAction(String label, String menuAction) {
-        currentLog.log(localUser.getSessionID(), LogDataType.IDE, label, menuAction);
+    public void logAction(String label, String action) {
+        currentLog.log(localUser.getSessionID(), LogDataType.IDE, label, action);
     }
 
     //open Google Doc for Versuchspersonenstunden after user agrees to upload and privacy
