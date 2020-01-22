@@ -6,9 +6,13 @@ import org.jetbrains.annotations.NotNull;
 
 public class CommandListener extends BaseListener implements com.intellij.openapi.command.CommandListener {
 
-    private static final String[] BLACKLLIST = {"", "Typing", "Tab", "Enter", "null", "Backspace"};
+    private static final String[] BLACKLLIST = {"", "Typing", "Tab", "Enter", "Backspace"};
 
     private boolean isOnBlacklist(CommandEvent event) {
+        String name = event.getCommandName();
+        if(name == null) {
+            return true;
+        }
         for(String restrictedCommand: BLACKLLIST) {
             if(restrictedCommand.equals(event.getCommandName())) {
                 return true;
@@ -22,7 +26,7 @@ public class CommandListener extends BaseListener implements com.intellij.openap
         if(isOnBlacklist(event)) {
             return;
         }
-        getApplicationService().inspectTopicAction("Command started", event.getCommandName());
+        getApplicationService().inspectTopicAction("Command", event.getCommandName());
     }
 
     @Override
@@ -32,10 +36,6 @@ public class CommandListener extends BaseListener implements com.intellij.openap
 
     @Override
     public void commandFinished(@NotNull CommandEvent event) {
-        if(isOnBlacklist(event)) {
-            return;
-        }
-        getApplicationService().inspectTopicAction("Command finished", event.getCommandName());
     }
 
     @Override
