@@ -1,6 +1,7 @@
 package app.listeners.events;
 
 import app.App;
+import app.listeners.events.actions.ActionPool;
 import app.listeners.events.topics.*;
 import app.listeners.events.ui.PopupMenuListener;
 import com.intellij.codeInsight.completion.CompletionPhaseListener;
@@ -30,6 +31,7 @@ public class ListenerHelper {
             initMenuListener(currentEditor.getComponent());
         }
         subscribeToMessageBus(currentProject.getMessageBus());
+        initProxyActions();
     }
 
     public static void initMenuListener(JComponent entryPoint) {
@@ -55,6 +57,12 @@ public class ListenerHelper {
         bus.connect().subscribe(CommandListener.TOPIC, new CommandListener());
         bus.connect().subscribe(FileEditorManagerListener.FILE_EDITOR_MANAGER, new FileListener());
         bus.connect().subscribe(ProjectTaskListener.TOPIC, new TaskListener());
+    }
+
+    private static void initProxyActions() {
+        ActionPool.getInstance().registerProxyAction("CallHierarchy", "Insights", "Call Hierarchy");
+        ActionPool.getInstance().registerProxyAction("MethodHierarchy", "Insights", "Method Hierarchy");
+        ActionPool.getInstance().registerProxyAction("TypeHierarchy", "Insights", "Type Hierarchy");
     }
 
     private static  JMenuBar findMenuBar(Container parent) {

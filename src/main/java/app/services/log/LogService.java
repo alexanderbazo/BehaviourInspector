@@ -44,6 +44,7 @@ public class LogService implements SyncProgressListener, StringValues {
     }
 
     public void logAction(String label, String action) {
+        System.out.println("Logging: [" + label + "] " + action);
         currentLog.log(localUser.getSessionID(), LogDataType.IDE, label, action);
     }
 

@@ -17,7 +17,6 @@ public class ProxyAction extends AnAction  {
     private String description;
 
     public ProxyAction(String actionId, String category, String description)  {
-        System.out.println("Adding proxy for " + actionId);
         applicationManager = ServiceManager.getService(ApplicationService.class);
         this.category = category;
         this.description = description;
@@ -33,7 +32,6 @@ public class ProxyAction extends AnAction  {
 
     @Override
     public void actionPerformed(@NotNull AnActionEvent e) {
-        System.out.println("Action: " + description);
         applicationManager.inspectIdeAction(category, description);
         oldAction.actionPerformed(e);
     }

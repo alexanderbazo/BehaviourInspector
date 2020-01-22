@@ -2,6 +2,7 @@ package app.listeners.events.topics;
 
 import app.listeners.events.base.BaseListener;
 import com.intellij.openapi.command.CommandEvent;
+import data.Measurements;
 import org.jetbrains.annotations.NotNull;
 
 public class CommandListener extends BaseListener implements com.intellij.openapi.command.CommandListener {
