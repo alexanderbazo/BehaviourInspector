@@ -1,6 +1,5 @@
 package app.services.application;
 
-import app.App;
 import app.listeners.events.ListenerHelper;
 import app.services.log.LogService;
 import com.intellij.openapi.components.ServiceManager;
