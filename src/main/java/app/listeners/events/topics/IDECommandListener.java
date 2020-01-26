@@ -2,12 +2,15 @@ package app.listeners.events.topics;
 
 import app.listeners.events.base.BaseListener;
 import com.intellij.openapi.command.CommandEvent;
-import data.Measurements;
 import org.jetbrains.annotations.NotNull;
 
-public class CommandListener extends BaseListener implements com.intellij.openapi.command.CommandListener {
+public class IDECommandListener extends BaseListener implements com.intellij.openapi.command.CommandListener {
 
-    private static final String[] BLACKLLIST = {"", "Typing", "Tab", "Enter", "Backspace"};
+    private static final String[] BLACKLLIST = {"", "Typing", "Tab", "Enter", "Backspace", "Left", "Right", "Up", "Down"};
+
+    public IDECommandListener() {
+        super("Command");
+    }
 
     private boolean isOnBlacklist(CommandEvent event) {
         String name = event.getCommandName();
@@ -27,7 +30,7 @@ public class CommandListener extends BaseListener implements com.intellij.openap
         if(isOnBlacklist(event)) {
             return;
         }
-        getApplicationService().inspectTopicAction("Command", event.getCommandName());
+        log(event.getCommandName());
     }
 
     @Override

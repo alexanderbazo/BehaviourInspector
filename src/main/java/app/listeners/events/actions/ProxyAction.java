@@ -1,6 +1,7 @@
 package app.listeners.events.actions;
 
 import app.listeners.events.base.BaseListener;
+import app.listeners.events.base.Event;
 import app.services.application.ApplicationService;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.AnAction;
@@ -32,7 +33,8 @@ public class ProxyAction extends AnAction  {
 
     @Override
     public void actionPerformed(@NotNull AnActionEvent e) {
-        applicationManager.inspectIdeAction(category, description);
+        Event actionEvent = new Event(category, description);
+        applicationManager.inspectEvent(actionEvent);
         oldAction.actionPerformed(e);
     }
 

@@ -1,6 +1,7 @@
 package app.services.application;
 
 import app.listeners.events.ListenerHelper;
+import app.listeners.events.base.Event;
 import app.services.log.LogService;
 import com.intellij.openapi.components.ServiceManager;
 
@@ -47,23 +48,11 @@ public class ApplicationService {
         state = ApplicationState.IDLE;
     }
 
-    public void inspectTopicAction(String topic, String action) {
-        inspectAction(topic, action);
-    }
-
-    public void inspectMenuAction(ActionEvent event) {
-        inspectAction("Menu", event.getActionCommand());
-    }
-
-    public void inspectIdeAction(String category, String action) {
-        inspectAction(category, action);
-    }
-
-    public void inspectAction(String label, String action) {
+    public void inspectEvent(Event event) {
         if(state == ApplicationState.IDLE) {
             return;
         }
-        logService.logAction(label, action);
+        logService.logAction(event.label, event.msg);
     }
 
 }

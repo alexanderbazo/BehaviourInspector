@@ -50,11 +50,11 @@ public class ListenerHelper {
     private static  void subscribeToMessageBus(MessageBus bus) {
         bus.connect().subscribe(RefactoringListener.REFACTORING_EVENT_TOPIC, new RefactoringListener());
         bus.connect().subscribe(CompletionPhaseListener.TOPIC, new CodeCompletionListener());
-        bus.connect().subscribe(EditorHintListener.TOPIC, new EditorHintListener());
+        bus.connect().subscribe(IDEHintListener.TOPIC, new IDEHintListener());
         bus.connect().subscribe(XBreakpointListener.TOPIC, new BreakpointListener());
         bus.connect().subscribe(ProjectManager.TOPIC, new ProjectListener());
         bus.connect().subscribe(FindManager.FIND_MODEL_TOPIC, new FindListener());
-        bus.connect().subscribe(CommandListener.TOPIC, new CommandListener());
+        bus.connect().subscribe(IDECommandListener.TOPIC, new IDECommandListener());
         bus.connect().subscribe(FileEditorManagerListener.FILE_EDITOR_MANAGER, new FileListener());
         bus.connect().subscribe(ProjectTaskListener.TOPIC, new TaskListener());
     }

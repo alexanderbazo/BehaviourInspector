@@ -11,6 +11,10 @@ public class FileListener extends BaseListener implements FileEditorManagerListe
 
     private boolean wasInvokedOnce = false;
 
+    public FileListener() {
+        super("Files");
+    }
+
     @Override
     public void fileOpenedSync(@NotNull FileEditorManager source, @NotNull VirtualFile file, @NotNull Pair<FileEditor[], FileEditorProvider[]> editors) {
     }
