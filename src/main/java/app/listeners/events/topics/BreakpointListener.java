@@ -7,19 +7,22 @@ import org.jetbrains.annotations.NotNull;
 
 public class BreakpointListener extends BaseListener implements XBreakpointListener {
 
+    public BreakpointListener() {
+        super("Breakpoint");
+    }
+
     @Override
     public void breakpointAdded(@NotNull XBreakpoint breakpoint) {
-        getApplicationService().inspectTopicAction("Breakpoint", "Breakpoint added");
+        log("Breakpoint added");
     }
 
     @Override
     public void breakpointRemoved(@NotNull XBreakpoint breakpoint) {
-        getApplicationService().inspectTopicAction("Breakpoint", "Breakpoint removed");
+        log("Breakpoint removed");
     }
 
     @Override
     public void breakpointChanged(@NotNull XBreakpoint breakpoint) {
-        getApplicationService().inspectTopicAction("Breakpoint", "Breakpoint changed");
-
+        log("Breakpoint changed");
     }
 }

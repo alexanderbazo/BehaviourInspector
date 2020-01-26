@@ -34,7 +34,10 @@ public interface StringValues {
             "<h3>Umfang der aufgezeichneten Daten:</h3>" +
             "<ul><li>UUID zur Identifikation der Datens\u00e4tze ($ID)</li>" +
             "<li>Verwendete Men\u00fceintr\u00e4ge </li>" +
-            "<li>Verwendete IDE-Funktionen</li></ul>";
+            "<li>Verwendete IDE-Funktionen</li>" +
+            "<li>Häufigkeit der Codebearbeitung</li>" +
+            "<li>Navigation innerhalb der IDE</li>" +
+            "<li>Anzahl der aufgetretenen Fehler und Warnungen</li></ul>";
     String DATA_PRIVACY_DECLINED_TITLE = "Ihre Daten werden nicht verwendet";
     String DATA_PRIVACY_DECLINED_MESSAGE = "<div style=\"font-family: sans-serif\"><h1>Ihre Daten werden nicht verwendet</h1><p>Sie haben der Datenschutzerkl\u00E4rung widersprochen.\nDie aufgezeichneten Interaktionsdaten werden <b>nicht auf den Server hochgeladen</b> und werden automatisch gel\u00f6scht, sobald Sie sich von dem CIP-Pool-Rechner abmelden. <p>Sollten Sie Ihren eigenen Rechner verwendet haben, l\u00f6schen Sie bitte den Ordner <code>.OOP-Plugin</code> in Ihrem Benutzerverzeichnis.</p></div>";
 }

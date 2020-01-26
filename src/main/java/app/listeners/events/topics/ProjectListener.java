@@ -6,14 +6,19 @@ import com.intellij.openapi.project.ProjectManagerListener;
 import org.jetbrains.annotations.NotNull;
 
 public class ProjectListener extends BaseListener implements ProjectManagerListener {
+
+    public ProjectListener() {
+        super("Project");
+    }
+
     @Override
     public void projectOpened(@NotNull Project project) {
-        getApplicationService().inspectTopicAction("Project", "Project opened [" + project.getName() + "]");
+        log("Project opened [" + project.getName() + "]");
     }
 
     @Override
     public void projectClosed(@NotNull Project project) {
-        getApplicationService().inspectTopicAction("Project", "Project closed [" + project.getName() + "]");
+        log("Project closed [" + project.getName() + "]");
     }
 
     @Override

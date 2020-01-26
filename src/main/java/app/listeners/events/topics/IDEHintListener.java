@@ -1,6 +1,7 @@
 package app.listeners.events.topics;
 
 import app.listeners.events.base.BaseListener;
+import com.intellij.codeInsight.hint.EditorHintListener;
 import com.intellij.openapi.project.Project;
 import com.intellij.ui.HintListener;
 import com.intellij.ui.LightweightHint;
@@ -9,10 +10,14 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.EventObject;
 
-public class EditorHintListener extends BaseListener implements com.intellij.codeInsight.hint.EditorHintListener, HintListener, Measurements {
+public class IDEHintListener extends BaseListener implements EditorHintListener, HintListener, Measurements {
 
     private long lastHintShown = 0;
     private long lastHintHidden = 0;
+
+    public IDEHintListener() {
+        super("EditorHint");
+    }
 
     @Override
     public void hintShown(Project project, @NotNull LightweightHint hint, int flags) {
@@ -21,7 +26,7 @@ public class EditorHintListener extends BaseListener implements com.intellij.cod
             return;
         }
         hint.addHintListener(this);
-        getApplicationService().inspectTopicAction("EditorHint", "Hint shown");
+        log( "Hint shown");
         lastHintShown = now;
     }
 
@@ -31,7 +36,7 @@ public class EditorHintListener extends BaseListener implements com.intellij.cod
         if (now - lastHintHidden < MIN_EVENT_DELAY_IN_MS) {
             return;
         }
-        getApplicationService().inspectTopicAction("EditorHint", "Hint hidden");
+        log("Hint hidden");
         lastHintHidden = now;
     }
 }
