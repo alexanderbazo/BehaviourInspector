@@ -21,18 +21,20 @@ public class FileListener extends BaseListener implements FileEditorManagerListe
 
     @Override
     public void fileOpened(@NotNull FileEditorManager source, @NotNull VirtualFile file) {
-        FileEditor currentEditor = source.getSelectedEditor();
+        log("File opened: " + file.getName());
         if(!wasInvokedOnce) {
-            ListenerHelper.initMenuListener(currentEditor.getComponent());
+            ListenerHelper.initMenuListener(source.getSelectedEditor());
             wasInvokedOnce = true;
         }
     }
 
     @Override
     public void fileClosed(@NotNull FileEditorManager source, @NotNull VirtualFile file) {
+        log("File closed: " + file.getName());
     }
 
     @Override
     public void selectionChanged(@NotNull FileEditorManagerEvent event) {
+        log("Switched to file: " + event.getNewFile().getName());
     }
 }

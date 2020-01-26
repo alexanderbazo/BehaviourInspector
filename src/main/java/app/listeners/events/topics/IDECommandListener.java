@@ -1,33 +1,61 @@
 package app.listeners.events.topics;
 
 import app.listeners.events.base.BaseListener;
+import app.listeners.events.base.Event;
 import com.intellij.openapi.command.CommandEvent;
+import data.Measurements;
 import org.jetbrains.annotations.NotNull;
 
-public class IDECommandListener extends BaseListener implements com.intellij.openapi.command.CommandListener {
+import java.util.Timer;
+import java.util.TimerTask;
 
-    private static final String[] BLACKLLIST = {"", "Typing", "Tab", "Enter", "Backspace", "Left", "Right", "Up", "Down"};
+public class IDECommandListener extends BaseListener implements Measurements, com.intellij.openapi.command.CommandListener {
+
+    private static final String[] BLACKLISTED_COMMANDS = {"", "Left", "Right", "Up", "Down", "Left with Selection", "Right with Selection", "Up with Selection", "Down with Selection"};
+    private static final String[] EDITING_COMMANDS = {"Typing", "Tab", "Enter", "Backspace"};
+    private Timer syncTimer;
+    private int currentEditingEventCount = 0;
 
     public IDECommandListener() {
         super("Command");
+        syncTimer = new Timer();
+        syncTimer.scheduleAtFixedRate(new EditingCommandLoggerTask(this), EDITING_EVENT_FRAME_IN_MS, EDITING_EVENT_FRAME_IN_MS);
+    }
+
+    private boolean isTypingCommand(CommandEvent event) {
+        return isInCommandList(EDITING_COMMANDS, event);
     }
 
     private boolean isOnBlacklist(CommandEvent event) {
+        return isInCommandList(BLACKLISTED_COMMANDS, event);
+    }
+
+    private boolean isInCommandList(String[] list, CommandEvent event) {
         String name = event.getCommandName();
-        if(name == null) {
+        if (name == null) {
             return true;
         }
-        for(String restrictedCommand: BLACKLLIST) {
-            if(restrictedCommand.equals(event.getCommandName())) {
+        for (String command : list) {
+            if (command.equals(name)) {
                 return true;
             }
         }
         return false;
     }
 
+    protected void syncEditingCommandPuffer() {
+        Event event = new Event("Editing", "(Editing commands in this frame: " + currentEditingEventCount + ")");
+        getApplicationService().inspectEvent(event);
+        currentEditingEventCount = 0;
+    }
+
     @Override
     public void commandStarted(@NotNull CommandEvent event) {
-        if(isOnBlacklist(event)) {
+        if (isOnBlacklist(event)) {
+            return;
+        }
+        if (isTypingCommand(event)) {
+            currentEditingEventCount++;
             return;
         }
         log(event.getCommandName());
@@ -55,5 +83,20 @@ public class IDECommandListener extends BaseListener implements com.intellij.ope
     @Override
     public void undoTransparentActionFinished() {
 
+    }
+
+    private class EditingCommandLoggerTask extends TimerTask {
+
+        private IDECommandListener parent;
+
+        public EditingCommandLoggerTask(IDECommandListener parent) {
+            super();
+            this.parent = parent;
+        }
+
+        @Override
+        public void run() {
+            parent.syncEditingCommandPuffer();
+        }
     }
 }
