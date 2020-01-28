@@ -4,12 +4,12 @@ plugins {
 }
 
 group 'de.ur.mi'
-version '0.1.2'
+version '0.1.3'
 
 sourceCompatibility = 1.8
 
 repositories {
-    mavenCentral()
+  mavenCentral()
 }
 
 dependencies {

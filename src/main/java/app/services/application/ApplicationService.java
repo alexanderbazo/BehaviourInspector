@@ -6,6 +6,8 @@ import app.services.log.LogService;
 import com.intellij.openapi.components.ServiceManager;
 
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+import java.util.ListIterator;
 
 public class ApplicationService {
 
@@ -13,6 +15,7 @@ public class ApplicationService {
     private boolean listenersAreReady = false;
     private ApplicationState state = ApplicationState.IDLE;
     private LogService logService;
+    private ArrayList<AutoLogger> autoLoggers = new ArrayList<AutoLogger>();
 
     public static ApplicationService getInstance() {
         return ServiceManager.getService(ApplicationService.class);
@@ -43,9 +46,18 @@ public class ApplicationService {
         if (state == ApplicationState.IDLE) {
             return;
         }
+        cancelAutoLogger();
         logService.logAction("Plugin", "Session saved");
         logService.syncCurrentLog();
         state = ApplicationState.IDLE;
+    }
+
+    private void cancelAutoLogger() {
+        ListIterator<AutoLogger> loggers = autoLoggers.listIterator();
+        while(loggers.hasNext()){
+            loggers.next().cancel();
+            loggers.remove();
+        }
     }
 
     public void inspectEvent(Event event) {
@@ -53,6 +65,10 @@ public class ApplicationService {
             return;
         }
         logService.logAction(event.label, event.msg);
+    }
+
+    public void registerAutoLogger(AutoLogger logger) {
+        autoLoggers.add(logger);
     }
 
 }

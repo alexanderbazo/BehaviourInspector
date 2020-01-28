@@ -2,6 +2,7 @@ package app.listeners.events.topics;
 
 import app.listeners.events.base.BaseListener;
 import app.listeners.events.base.Event;
+import app.services.application.AutoLogger;
 import com.intellij.openapi.command.CommandEvent;
 import data.Measurements;
 import org.jetbrains.annotations.NotNull;
@@ -9,17 +10,20 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class IDECommandListener extends BaseListener implements Measurements, com.intellij.openapi.command.CommandListener {
+public class IDECommandListener extends BaseListener implements Measurements, AutoLogger, com.intellij.openapi.command.CommandListener {
 
     private static final String[] BLACKLISTED_COMMANDS = {"", "Left", "Right", "Up", "Down", "Left with Selection", "Right with Selection", "Up with Selection", "Down with Selection"};
-    private static final String[] EDITING_COMMANDS = {"Typing", "Tab", "Enter", "Backspace"};
+    private static final String[] EDITING_COMMANDS = {"Typing", "Tab", "Enter", "Backspace", "Delete"};
     private Timer syncTimer;
+    private boolean syncTimerIsRunning = false;
     private int currentEditingEventCount = 0;
 
     public IDECommandListener() {
         super("Command");
         syncTimer = new Timer();
         syncTimer.scheduleAtFixedRate(new EditingCommandLoggerTask(this), EDITING_EVENT_FRAME_IN_MS, EDITING_EVENT_FRAME_IN_MS);
+        syncTimerIsRunning = true;
+        getApplicationService().registerAutoLogger(this);
     }
 
     private boolean isTypingCommand(CommandEvent event) {
@@ -83,6 +87,17 @@ public class IDECommandListener extends BaseListener implements Measurements, co
     @Override
     public void undoTransparentActionFinished() {
 
+    }
+
+    @Override
+    public boolean isRunning() {
+        return syncTimerIsRunning;
+    }
+
+    @Override
+    public void cancel() {
+        syncTimer.cancel();
+        syncTimerIsRunning = false;
     }
 
     private class EditingCommandLoggerTask extends TimerTask {
