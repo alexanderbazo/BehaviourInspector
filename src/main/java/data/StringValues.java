@@ -2,9 +2,8 @@ package data;
 
 public interface StringValues {
     /* Logging */
-    String LOG_TITLE = "Behaviour Inspector";
+    String LOG_TITLE = "Behaviour Inspector 2.0";
     String UPLOAD_SERVER_URL = "http://regensburger-forscher.de:9999/upload/";
-    String CONFIRMATION_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLScIV6Z_CMR13WKAvi3tVJgNH8U8PXWqUU4nj1HfSQJva53txA/viewform?usp=pp_url&entry.683205857=$ID";
 
     /* Notifications */
     String PLUGIN_RUNNING_STATUS = "Plugin wurde gestartet";
@@ -21,8 +20,7 @@ public interface StringValues {
     String DATA_PRIVACY_ACCEPT_OPTION = "Akzeptieren";
     String DATA_PRIVACY_DECLINE_OPTION = "Verweigern";
     String DATA_PRIVACY_MESSAGE = "<div style=\"font-family: sans-serif\"><h1><b>Vielen Dank f\u00fcr die Teilnahme an dieser Studie.</h1>"+
-            "<p>Sobald Sie die Datenschutzerkl\u00e4rung akzeptiert haben, werden die geloggten Daten auf den Server hochgeladen. "+
-            "Im Anschluss werden Sie zu einem Google Formular weitergeleitet, in dem Sie sich 0,25 Versuchspersonenstunden gutschreiben lassen k\u00f6nnen.</p>"+
+            "<p>Sobald Sie die Datenschutzerkl\u00e4rung akzeptiert haben, werden die geloggten Daten auf den Server hochgeladen.</p>"+
             "<h2>Datenschutzerkl\u00e4rung</h2>" +
             "<p>Sie haben ein Plugin f\u00fcr die Entwicklungsumgebung IntelliJ verwendet. " +
             "Durch die Nutzung wurden Interaktionsdaten aufgezeichnet und auf einem Webserver des Lehrstuhls f\u00fcr Medieninformatik gespeichert.</p>" +
@@ -40,4 +38,6 @@ public interface StringValues {
             "<li>Anzahl der aufgetretenen Fehler und Warnungen</li></ul>";
     String DATA_PRIVACY_DECLINED_TITLE = "Ihre Daten werden nicht verwendet";
     String DATA_PRIVACY_DECLINED_MESSAGE = "<div style=\"font-family: sans-serif\"><h1>Ihre Daten werden nicht verwendet</h1><p>Sie haben der Datenschutzerkl\u00E4rung widersprochen.\nDie aufgezeichneten Interaktionsdaten werden <b>nicht auf den Server hochgeladen</b> und werden automatisch gel\u00f6scht, sobald Sie sich von dem CIP-Pool-Rechner abmelden. <p>Sollten Sie Ihren eigenen Rechner verwendet haben, l\u00f6schen Sie bitte den Ordner <code>.OOP-Plugin</code> in Ihrem Benutzerverzeichnis.</p></div>";
+    String DATA_UPLOAD_COMPLETED_TITLE = "Ihre Daten wurden hochgeladen";
+    String DATA_UPLOAD_COMPLETED_MESSAGE = "<div style=\"font-family: sans-serif\"><h1>Ihre Daten sind auf den Server hochgeladen worden</h1><p>Vielen Dank für Ihre Teilnahme!</p><p>Die lokal gespeicherten Daten werden automatisch gel\u00f6scht, sobald Sie sich von dem CIP-Pool-Rechner abmelden. <p>Sollten Sie Ihren eigenen Rechner verwendet haben, l\u00f6schen Sie bitte den Ordner <code>.OOP-Plugin</code> in Ihrem Benutzerverzeichnis.</p></div>";
 }

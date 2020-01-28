@@ -6,6 +6,8 @@ import app.listeners.events.topics.*;
 import app.listeners.events.ui.PopupMenuListener;
 import com.intellij.codeInsight.completion.CompletionPhaseListener;
 import com.intellij.codeInsight.daemon.DaemonCodeAnalyzer;
+import com.intellij.execution.ExecutionManager;
+import com.intellij.execution.ui.RunContentManager;
 import com.intellij.find.FindManager;
 import com.intellij.openapi.actionSystem.impl.ActionMenu;
 import com.intellij.openapi.fileEditor.FileEditor;
@@ -61,6 +63,7 @@ public class ListenerHelper {
         bus.connect().subscribe(FileEditorManagerListener.FILE_EDITOR_MANAGER, new FileListener());
         bus.connect().subscribe(ProjectTaskListener.TOPIC, new TaskListener());
         bus.connect().subscribe(DaemonCodeAnalyzer.DAEMON_EVENT_TOPIC, new CodeAnalyzerListener(currentProject));
+        bus.connect().subscribe(ExecutionManager.EXECUTION_TOPIC, new RunListener());
     }
 
     private static void initProxyActions() {

@@ -28,7 +28,7 @@ public class LogService implements SyncProgressListener, StringValues {
 
     public void createSessionLog() {
         localUser.updateSessionID();
-        currentLog = LogManager.openLog(localUser.getID(), LOG_TITLE);
+        currentLog = LogManager.openLog(localUser.getSessionID(), LOG_TITLE);
     }
 
     //Sync log only if user accepts privacy policy
@@ -44,20 +44,12 @@ public class LogService implements SyncProgressListener, StringValues {
     }
 
     public void logAction(String label, String action) {
-        System.out.println("Logging: [" + label + "] " + action);
         currentLog.log(localUser.getSessionID(), LogDataType.IDE, label, action);
     }
 
-    //open Google Doc for Versuchspersonenstunden after user agrees to upload and privacy
     @Override
     public void onFinished() {
-        try {
-            if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
-                Desktop.getDesktop().browse(new URI(CONFIRMATION_FORM_URL.replace("$ID", localUser.getID())));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        DataPrivacyDialog.showStatusDialog(StringValues.DATA_UPLOAD_COMPLETED_TITLE, StringValues.DATA_UPLOAD_COMPLETED_MESSAGE);
     }
 
     @Override
