@@ -36,10 +36,10 @@ public class ListenerHelper {
     }
 
     public static void initMenuListener(FileEditor currentEditor) {
-        JComponent entryPoint = currentEditor.getComponent();
-        if(entryPoint == null) {
+        if(currentEditor == null || currentEditor.getComponent() == null) {
             return;
         }
+        JComponent entryPoint = currentEditor.getComponent();
         if(menuListenerInitialized) {
             return;
         }
