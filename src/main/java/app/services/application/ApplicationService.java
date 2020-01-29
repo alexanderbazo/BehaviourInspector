@@ -5,7 +5,6 @@ import app.listeners.events.base.Event;
 import app.services.log.LogService;
 import com.intellij.openapi.components.ServiceManager;
 
-import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.ListIterator;
 
@@ -37,6 +36,7 @@ public class ApplicationService {
             ListenerHelper.initListener();
             listenersAreReady = true;
         }
+        startAutoLoggers();
         logService.createSessionLog();
         logService.logAction("Plugin", "Session started");
         state = ApplicationState.RECORDING;
@@ -46,17 +46,21 @@ public class ApplicationService {
         if (state == ApplicationState.IDLE) {
             return;
         }
-        cancelAutoLogger();
+        stopAutoLoggers();
         logService.logAction("Plugin", "Session saved");
         logService.syncCurrentLog();
         state = ApplicationState.IDLE;
     }
 
-    private void cancelAutoLogger() {
-        ListIterator<AutoLogger> loggers = autoLoggers.listIterator();
-        while(loggers.hasNext()){
-            loggers.next().cancel();
-            loggers.remove();
+    private void startAutoLoggers() {
+        for(AutoLogger logger: autoLoggers) {
+            logger.start();
+        }
+    }
+
+    private void stopAutoLoggers() {
+        for(AutoLogger logger: autoLoggers) {
+            logger.stop();
         }
     }
 

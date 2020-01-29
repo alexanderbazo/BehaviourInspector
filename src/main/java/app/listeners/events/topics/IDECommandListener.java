@@ -20,10 +20,21 @@ public class IDECommandListener extends BaseListener implements Measurements, Au
 
     public IDECommandListener() {
         super("Command");
+        getApplicationService().registerAutoLogger(this);
+    }
+
+    private void startSyncTimer() {
+        if(syncTimer != null) {
+            syncTimer.cancel();
+        }
         syncTimer = new Timer();
         syncTimer.scheduleAtFixedRate(new EditingCommandLoggerTask(this), EDITING_EVENT_FRAME_IN_MS, EDITING_EVENT_FRAME_IN_MS);
         syncTimerIsRunning = true;
-        getApplicationService().registerAutoLogger(this);
+    }
+
+    private void stopSyncTimer() {
+        syncTimer.cancel();
+        syncTimerIsRunning = false;
     }
 
     private boolean isTypingCommand(CommandEvent event) {
@@ -95,9 +106,13 @@ public class IDECommandListener extends BaseListener implements Measurements, Au
     }
 
     @Override
-    public void cancel() {
-        syncTimer.cancel();
-        syncTimerIsRunning = false;
+    public void start() {
+        startSyncTimer();
+    }
+
+    @Override
+    public void stop() {
+        stopSyncTimer();
     }
 
     private class EditingCommandLoggerTask extends TimerTask {
